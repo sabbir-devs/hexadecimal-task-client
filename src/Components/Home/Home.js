@@ -5,7 +5,7 @@ import './Home.css';
 const Home = () => {
     const [users, setUsers] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://fast-lake-41053.herokuapp.com/users')
         .then(res => res.json())
         .then(data => {
             setUsers(data)
