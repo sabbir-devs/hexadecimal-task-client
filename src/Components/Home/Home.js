@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import Table from '../Table/Table';
+import './Home.css';
 
 const Home = () => {
-    const [user, setUser] = useState()
+    const [users, setUsers] = useState()
     useEffect(() => {
         fetch('http://localhost:5000/users')
         .then(res => res.json())
         .then(data => {
-            setUser(data)
+            setUsers(data)
             console.log(data)
         })
     },[])
     return (
-        <div>
-            
+        <div className='home'>
+            <h1>{users?.length}</h1>
+            {
+                users?.map(user => <Table user={user} key={user._id}></Table>)
+            }
         </div>
     );
 };
